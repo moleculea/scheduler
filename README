@@ -1,0 +1,31 @@
+==Usage==
+usage: python main.py [-hpv] code input_file
+
+Schedule processes with a specific scheduling algorithm (FCFS, RR, or SRJF)
+
+  FCFS : First-Come-First-Served (non-preemptive)
+  RR   : Round-Robin with quantum 2
+  SRJF : Shortest remaining job first (preemptive)
+
+positional arguments:
+  code ({0,1,2,3})  code (0, 1, 2, or 3) for scheduling algorithm (0: FCFS; 1:
+                    RR; 2: SRJF; 3: all of them)
+  input_file        /path/to/input-file.txt
+
+optional arguments:
+  -h, --help        show this help message and exit
+  -p, --print       print output file content to standard output
+  -n, --no-save     do not save output to files
+  -v, --verbose     print verbose information
+
+usage examples: 
+  main.py 0 input.txt                (save output without printing)
+  main.py -p 1 input.txt             (print output)
+  main.py -v 2 input.txt             (print verbose info)
+  main.py -pn 3 input.txt            (simply print and do not save output)
+
+==Author==
+Shichao An
+
+==Licensing==
+BSD License

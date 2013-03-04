@@ -1,11 +1,10 @@
 # -*- coding: utf-8  -*-
 import collections
-import utilities
 import decimal
 import itertools
-import utilities
 import copy
 from operator import attrgetter
+import utilities
 
 class PlannedProcess(object):
     """

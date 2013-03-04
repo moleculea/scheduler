@@ -18,11 +18,11 @@ def getArgs():
     
     parser = argparse.ArgumentParser(
                                      formatter_class=argparse.RawDescriptionHelpFormatter,
-                                     description="Schedule processes with a specific scheduling algorithm (FCFS, RR, or SRJF)\n\n\
+                                     description="Schedule process with a specific scheduling algorithm (FCFS, RR, or SRJF)\n\n\
   FCFS : First-Come-First-Served (non-preemptive)\n\
   RR   : Round-Robin with quantum 2\n\
   SRJF : Shortest remaining job first (preemptive)", 
-                                     usage="python %(prog)s [-hpv] code input_file",
+                                     usage="python %(prog)s [-hnpv] code input_file",
                                      epilog="usage examples: \n\
   %(prog)s 0 input.txt                (save output without printing)\n\
   %(prog)s -p 1 input.txt             (print output)\n\
@@ -31,8 +31,8 @@ def getArgs():
                                      )
     parser.add_argument('code', metavar="code ({0,1,2,3})", type=int, choices=[0, 1, 2, 3], help="code (0, 1, 2, or 3) for scheduling algorithm (0: FCFS; 1: RR; 2: SRJF; 3: all of them)")    
     parser.add_argument('input_file', help="/path/to/input-file.txt")
-    parser.add_argument('-p','--print', action="store_true", dest="to_print", help="print output file content to standard output")
     parser.add_argument('-n','--no-save', action="store_true", dest="no_save", help="do not save output to files")
+    parser.add_argument('-p','--print', action="store_true", dest="to_print", help="print output file content to standard output")
     parser.add_argument('-v','--verbose', action="store_true", dest="to_verbose", help="print verbose information")
     
     # if no argument is given, print help message

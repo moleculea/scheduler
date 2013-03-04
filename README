@@ -1,5 +1,5 @@
 ==Usage==
-usage: python main.py [-hpv] code input_file
+usage: python main.py [-hnpv] code input_file
 
 Schedule processes with a specific scheduling algorithm (FCFS, RR, or SRJF)
 
@@ -14,8 +14,8 @@ positional arguments:
 
 optional arguments:
   -h, --help        show this help message and exit
-  -p, --print       print output file content to standard output
   -n, --no-save     do not save output to files
+  -p, --print       print output file content to standard output
   -v, --verbose     print verbose information
 
 usage examples: 

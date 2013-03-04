@@ -50,10 +50,12 @@ def check_version():
     version = sys.version_info
     if version[0] == 2:
         if version[1] < 7:
-            output.error("Python 2.%d installed. This app requires Python 2.7."%(version[1]))
+            output.error("Python 2.%d detected. This program requires Python 2.7."%(version[1]))
+            output.warning("Please try using 'python2.7' command if your system has Python 2.7 installed.")
             sys.exit(1)
     if version[0] == 3:
-            output.error("Python 3.%d installed. This app requires Python 2.7."%(version[1]))
+            output.error("Python 3.%d detected. This program requires Python 2.7. Please try using 'python2.7' command. "%(version[1]))
+            output.warning("Please try using 'python2.7' command if your system has Python 2.7 installed.")
             sys.exit(1)
             
 if __name__ == '__main__':

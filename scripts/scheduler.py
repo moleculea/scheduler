@@ -117,7 +117,6 @@ class Process(PlannedProcess):
         else:
             return False
         
-        
     def toBlocked(self):
         """
         For 'Running' process:
@@ -234,9 +233,11 @@ class Scheduler(object):
         Things to be done before start()
         """
         self._mapArrival()
-        
-                
+                    
     def start(self):
+        """
+        To be overridden in derived classes
+        """
         self.prolog()
         
     def _getArrivalProcs(self, arr_time):
@@ -363,6 +364,9 @@ class Scheduler(object):
     
     
     def _reformatRecord(self):
+        """
+        Reformat original cycle record for output
+        """
         reformat_record = []
         for record in self._record:
             rfm =  {} # reformatted dict
@@ -382,9 +386,11 @@ class Scheduler(object):
             
             reformat_record.append(collections.OrderedDict(sorted(rfm.items(), key=lambda t: t[0])))
         self._reformat = reformat_record
-        #print self._reformat
     
     def _printable(self):
+        """
+        Generate printable list of reformatted record
+        """
         self._reformatRecord()
         item_str_list = []
         for record in self._reformat:
@@ -395,6 +401,9 @@ class Scheduler(object):
         return item_str_list
     
     def output(self):
+        """
+        Return the output as a string
+        """
         items = self._printable()
         output = ""
         for i in range(len(items)):
@@ -409,6 +418,9 @@ class Scheduler(object):
         return output
     
     def _getStat(self):
+        """
+        Generate statistics
+        """
         self._stat.append(self._end_time)
         cpu_work = 0
         for record in self._record:
@@ -452,7 +464,6 @@ class FCFS(Scheduler):
         # main iteration
         for i in itertools.count():
 
-            
             sc_running_proc = self._getScRunningProc()
             sc_blocked_procs = self._getScBlockedProcs()
             
@@ -528,8 +539,7 @@ class FCFS(Scheduler):
         """
         Enqueue the specified list of processes, calling waiting() on each process and sort by process ID
             * procs may be empty
-            
-            
+              
         ##!! Can be moved to Scheduler class
         """
         if procs:
@@ -737,7 +747,6 @@ class SRJF(Scheduler):
             self._recordCycle(running_proc, blocked_procs, ready_procs)
             self._scheduleNextCycle(i, running_proc, blocked_procs)
             
-            
     def _getReadyProcs(self):
         return self.__ready_procs
     
@@ -800,8 +809,6 @@ class SRJF(Scheduler):
                     self._unsetScBlockedProc(proc)                   
                     self._addReadyProc(proc)
             
-            
-            
-            
-            
+if __name__ == '__main__':
+    utilities.output.warning("Please run main.py script from project's directory.")       
     

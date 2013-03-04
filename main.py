@@ -12,6 +12,11 @@ try:
     from scripts.scheduler import *
 except:
     utilities.check_version()
+    
+def detectSystem():
+    if platform.system() == 'Windows':
+        print "WARNING: ANSI color may not work on Windows Command Prompt.\n\
+You may see meta-escaping characters instead of color output."
 
 def getArgs():
     """Parse command-line arguments with optional functionalities"""
@@ -196,9 +201,9 @@ def printOutput(code, outputs, verbose):
             print outputs[i]
             if i in [0,1]:
                 print "-"*24
-
-       
+    
 def main():
+    detectSystem()
     # get config
     config = preprocess()
     code = config.code
